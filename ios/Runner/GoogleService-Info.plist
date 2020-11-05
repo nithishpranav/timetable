@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>50488283980-5meqpes4lli33i71t8gnac4avjsp28bf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.50488283980-5meqpes4lli33i71t8gnac4avjsp28bf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAXBlVzEatH8WG1RoZecdSYsxcNN1pJaY4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>50488283980</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.timeTable</string>
+	<key>PROJECT_ID</key>
+	<string>ttnp-ab248</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ttnp-ab248.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:50488283980:ios:56cab639b1dc7c669df5e9</string>
+	<key>DATABASE_URL</key>
+	<string>https://ttnp-ab248.firebaseio.com</string>
+</dict>
+</plist>
