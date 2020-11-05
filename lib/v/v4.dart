@@ -28,15 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(title: Text('Time Table'),backgroundColor: Colors.blueGrey[700]),
       backgroundColor: Colors.white70,
-
-      body: PageView.builder(
-
-        //controller: controller,
-        itemBuilder: (context, position) {
-          return  _buildBody(context);
-        },
-      ),
-      //body: _buildBody(context),
+      body: _buildBody(context),
     );
   }
 
@@ -45,51 +37,43 @@ class _MyHomePageState extends State<MyHomePage> {
       stream: Firestore.instance.collection('table').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
-        final NPtable = snapshot.data.documents[0]['Test_array'];
 
-        return  ListView.builder(
-          itemCount: NPtable.length,
-          itemBuilder: (context, index) {
-            return Center(
-              child: SizedBox(
-                width: 300,
-                height: 200,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: FlatButton(
-                    onPressed: () {},
-                    color: Colors.grey[600],
-                    child: Text('${NPtable[index]}'),
-                  ),
-                ),
-              ),
-            );
-          },
-        );
-        /*Column(
-          children: [
-            ListTile(
-
-              title: Text(NPtable[0]),
-              //trailing: Text(NPtable[0]),
-              //trailing: Text(snapshot.data.documents[0]['Test_array[0]'].toString()),
-              //onTap: () => print(record),
-            ),
-          ],
-
-          //children: <Widget>[
-          //Text(snapshot.data.documents[1]['name']),
-          //Text(snapshot.data.documents[1]['time'].toString()),
-          //],
-        );*/
+        return _buildList(context, snapshot.data.documents);
       },
     );
   }
 
+  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
+    return ListView(
+      padding: const EdgeInsets.only(top: 20.0),
+      children: snapshot.map((data) => _buildListItem(context, data)).toList(),
+    );
+  }
 
+  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
+    final record = Record.fromSnapshot(data);
+
+    return Padding(
+      key: ValueKey(record.name),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey,
+          border: Border.all(color: Colors.black),
+          borderRadius: BorderRadius.circular(5.0),
+
+        ),
+        child: ListTile(
+          title: Text(record.name),
+          trailing: Text(record.time.toString()),
+          //onTap: () => print(record),
+        ),
+      ),
+    );
+  }
 }
 
-/*class Record {
+class Record {
   final String name;
   final int time;
   final DocumentReference reference;
@@ -105,5 +89,4 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   String toString() => "Record<$name:$time>";
-}*/
-
+}
