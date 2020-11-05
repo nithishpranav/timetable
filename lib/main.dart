@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:time_table/login.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Time Table',
-      home: MyHomePage(),
+      home: TutorialHome(),
     );
   }
 }
@@ -52,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   return Center(
                     child: SizedBox(
                       width: 300,
-                      height: 200,
+                      height: 100,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: FlatButton(
