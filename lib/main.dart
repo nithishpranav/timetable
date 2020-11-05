@@ -28,15 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(title: Text('Time Table'),backgroundColor: Colors.blueGrey[700]),
       backgroundColor: Colors.white70,
-
-      body: PageView.builder(
-
-        controller: controller,
-        itemBuilder: (context, position) {
-          return  _buildBody(context);
-        },
-      ),
-      //body: _buildBody(context),
+      body: _buildBody(context),
     );
   }
 
