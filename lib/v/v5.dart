@@ -28,12 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(title: Text('Time Table'),backgroundColor: Colors.blueGrey[700]),
       backgroundColor: Colors.white70,
-      body: PageView.builder(
-        itemBuilder: (context, position) {
-          return  _buildBody(context);
-        },
-      ),
-      //body: _buildBody(context),
+      body: _buildBody(context),
     );
   }
 
@@ -42,34 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
       stream: Firestore.instance.collection('table').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
-        final NPtable = snapshot.data.documents[0]['Test_array'];
 
-        return  ListView.builder(
-          itemCount: NPtable.length,
-          itemBuilder: (context, index) {
-            return Center(
-              child: SizedBox(
-                width: 300,
-                height: 200,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: FlatButton(
-                    onPressed: () {},
-                    color: Colors.grey[600],
-                    child: Text('${NPtable[index]}'),
-                  ),
-                ),
-              ),
-            );
-          },
-        );
-        /*Column(
+        return Column(
           children: [
             ListTile(
-
-              title: Text(NPtable[0]),
-              //trailing: Text(NPtable[0]),
-              //trailing: Text(snapshot.data.documents[0]['Test_array[0]'].toString()),
+              title: Text(snapshot.data.documents[1]['name']),
+              trailing: Text(snapshot.data.documents[1]['time'].toString()),
               //onTap: () => print(record),
             ),
           ],
@@ -78,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //Text(snapshot.data.documents[1]['name']),
           //Text(snapshot.data.documents[1]['time'].toString()),
           //],
-        );*/
+        );
       },
     );
   }
@@ -103,4 +76,3 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   String toString() => "Record<$name:$time>";
 }*/
-
