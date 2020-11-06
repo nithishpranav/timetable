@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:time_table/login.dart';
-
+import 'choice.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -29,10 +29,23 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text('Time Table'), backgroundColor: Colors.blueGrey[700]),
-      backgroundColor: Colors.white70,
-
+      appBar: new AppBar(
+        backgroundColor: const Color(0xFFff6347),
+        leading: new IconButton(
+          icon: new Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          tooltip: 'Navigation menu',
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => Choice()),
+            );
+          },
+        ),
+        title: new Text('Time Table'),
+      ),
       body: PageView.builder(
         controller: controller,
         onPageChanged: (index) {
@@ -45,21 +58,25 @@ class _MyHomePageState extends State<MyHomePage> {
             stream: Firestore.instance.collection('table').snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) return LinearProgressIndicator();
-              final NPtable = snapshot.data.documents[pageChanged]['Test_array'];
+              final NPtable =
+                  snapshot.data.documents[pageChanged]['Test_array'];
 
               return ListView.builder(
                 itemCount: NPtable.length,
                 itemBuilder: (context, index) {
                   return Center(
                     child: SizedBox(
-                      width: 300,
+                      width: 400,
                       height: 100,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: FlatButton(
                           onPressed: () {},
-                          color: Colors.grey[600],
-                          child: Text('${NPtable[index]}'),
+                          color: Colors.white,
+                          child: Text('${NPtable[index]}',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black, fontSize: 22.0)),
                         ),
                       ),
                     ),

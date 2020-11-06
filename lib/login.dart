@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:time_table/choice.dart';
 import 'main.dart';
 
 class TutorialHome extends StatelessWidget {
@@ -41,14 +42,14 @@ class LoginPage extends StatelessWidget {
         children: <Widget>[
           buildInputField(context, "Enter your Name", Icons.person, false),
           buildInputField(context, "Enter your Roll Number",
-              Icons.coronavirus_outlined, false),
+              Icons.recent_actors, false),
           new Container(
               margin: const EdgeInsets.only(top: 26.0),
               child: new RaisedButton(
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => MyHomePage()),
+                    MaterialPageRoute(builder: (context) => Choice()),
                   );
                 },
                 child: new Text(
