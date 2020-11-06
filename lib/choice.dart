@@ -15,7 +15,7 @@ class Choice extends StatelessWidget {
           tooltip: 'Navigation menu',
           onPressed: null,
         ),*/
-        title: new Text('choose'),
+        title: new Text('HOME'),
 
       ),
       // body is the majority of the screen.
@@ -28,6 +28,7 @@ class Choice extends StatelessWidget {
                 child: RaisedButton(
                   child: Text("Time Table"),
                   onPressed:  () {
+
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => MyHomePage()),

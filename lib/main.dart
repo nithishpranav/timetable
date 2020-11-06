@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           },
         ),
-        title: new Text('Time Table'),
+        title: new Text('TIME TABLE'),
       ),
       body: PageView.builder(
         controller: controller,
@@ -103,6 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
         itemCount: 5,
+        physics: BouncingScrollPhysics(),
+        //scrollDirection: Axis.vertical,
       ),
       //body: _buildBody(context),
     );
