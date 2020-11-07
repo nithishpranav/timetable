@@ -5,34 +5,20 @@ import 'main.dart';
 class TutorialHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Scaffold is a layout for the major Material Design widgets.
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: const Color(0xFFff6347),
-/*        leading: new IconButton(
-          icon: new Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-          tooltip: 'Navigation menu',
-          onPressed: null,
-        ),*/
         title: new Text('Login Screen'),
-/*        actions: <Widget>[
-          new IconButton(
-            icon: new Icon(Icons.search, color: Colors.white),
-            tooltip: 'Search',
-            onPressed: null,
-          ),
-        ],*/
       ),
-      // body is the majority of the screen.
       body: new LoginPage(),
     );
   }
 }
 
 class LoginPage extends StatelessWidget {
+  final myController = TextEditingController();
+  var name = String;
+
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -40,9 +26,36 @@ class LoginPage extends StatelessWidget {
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          buildInputField(context, "Enter your Name", Icons.person, false),
-          buildInputField(context, "Enter your Roll Number",
-              Icons.recent_actors, false),
+          TextFormField(
+              //controller: myController,
+              decoration: const InputDecoration(
+                icon: Icon(Icons.person),
+                hintText: 'Enter Your Name',
+                /*border: new OutlineInputBorder(
+                          borderRadius: new BorderRadius.circular(25.0),
+                          borderSide: new BorderSide(
+                          ),
+                        ),*/
+              ),
+              onSaved: (String value) {},
+              validator: (String value) {
+                return "done";
+              }),
+          TextFormField(
+              //controller: myController,
+              decoration: const InputDecoration(
+                icon: Icon(Icons.reduce_capacity_sharp),
+                hintText: 'Enter Your Roll Number',
+                /*border: new OutlineInputBorder(
+                          borderRadius: new BorderRadius.circular(25.0),
+                          borderSide: new BorderSide(
+                          ),
+                        ),*/
+              ),
+              onSaved: (String value) {},
+              validator: (String value) {
+                return "Noted";
+              }),
           new Container(
               margin: const EdgeInsets.only(top: 26.0),
               child: new RaisedButton(
@@ -62,30 +75,3 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
-
-/**
- * create InputField
- */
-Widget buildInputField(
-    BuildContext context, String hint, IconData iconData, bool isPassword) {
-  return new Container(
-      decoration: new BoxDecoration(border: new Border.all(color: Colors.grey)),
-      padding: const EdgeInsets.all(10.0),
-      margin: const EdgeInsets.only(top: 16.0),
-      child: new Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          new Icon(
-            iconData,
-            color: const Color(0xFFff6347),
-          ),
-          new Flexible(
-              child: new TextField(
-                style: Theme.of(context).textTheme.body1,
-                decoration: new InputDecoration.collapsed(hintText: hint),
-                obscureText: isPassword,
-              )),
-        ],
-      ));
-}
-
