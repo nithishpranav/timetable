@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'subjects.dart';
 
 class Choice extends StatelessWidget {
   @override
@@ -19,29 +20,51 @@ class Choice extends StatelessWidget {
 
       ),
       // body is the majority of the screen.
-      body: new Container(
+      body:
+
+
+      new Container(
+        //width: 100,
+        //height: 100,
+       // margin: EdgeInsets.all(24),
+       // padding: EdgeInsets.only(top: 24),
+        alignment: Alignment.center,
       child: Center(
         child: Column(
             //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Center(
-                child: RaisedButton(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+
+                  child: RaisedButton(
                   child: Text("Time Table"),
                   onPressed:  () {
-
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => MyHomePage()),
                     );
                     //
+
                   },
                 ),
+      ),
               ),
               Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                 child: RaisedButton(
                   child: Text("Subject"),
-                  onPressed: () => null,
+                  onPressed: () {
+                Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => Sub()),
+                );
+                //
+
+                },
                 ),
+    ),
               )
             ]
         ),
